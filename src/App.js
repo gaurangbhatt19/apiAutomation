@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { Grid } from '@material-ui/core';
+import { Route, Routes } from 'react-router';
 import './App.css';
-
+import NavBar from './components/NavBar';
+import DashBoard from './pages/DashBoard';
+import FunctionalTest from './pages/FunctionalTest';
+import Projectslist from './pages/Projectslist';
+import Runner from './pages/Runner';
+import Unittest from './pages/Unittest';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+    <Grid container>
+      <Grid item md={1.5}>
+        <NavBar/>
+      </Grid>
+      <Grid item md={10}>
+        <Routes>
+         <Route path="/" element={<DashBoard />} exact/>
+         <Route path="/projects_lists" element={ <Projectslist />} exact/>
+         <Route path="/runner" element={<Runner />}  exact/>
+         <Route path="/functional_test" element={<FunctionalTest/>} />
+         <Route path="/unit_test" element={<Unittest/>} />
+         <Route path="/runner" exact element={<Runner />}/>
+        </Routes>
+      </Grid>
+    </Grid>
+  </> 
   );
 }
 
